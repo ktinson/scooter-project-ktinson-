@@ -1,13 +1,13 @@
-const ScooterApp = require('./ScooterApp')
-const Scooter = require('./Scooter')
+// const ScooterApp = require('./ScooterApp')
+// const Scooter = require('./Scooter')
 class User {
   // User code here
-constructor(username, password, age, loggedIn){
+constructor(username, password, age){
   this.username=username
   this.password=password
   this.age=age
-  loggedIn=false
-  this.loggedIn=loggedIn
+ 
+  this.loggedIn=false
 }
 login(password){}
 logout(){}
