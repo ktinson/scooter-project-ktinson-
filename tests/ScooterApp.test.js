@@ -7,12 +7,31 @@ const scooterApp = new ScooterApp()
 // register user
 describe('registerUser method tests', () => {
   test('Should return instance of User', () => {
-    const response = scooterApp.registerUser('Joe Bloggs', 'test123', 21)
+    const response = scooterApp.registerUser('JoeABloggs', 'test123', 21)
     expect(response).toBeInstanceOf(User)
   })
 })
 
 // log in
+describe('loginUser method tests', () => {
+  beforeEach(() => {scooterApp.registerUser('JoeBBloggs', 'test123', 21)
+})
+  test('Should login', () => {
+    const response = scooterApp.loginUser('JoeBBloggs', 'test123')
+    expect(scooterApp.registeredUsers['JoeBBloggs'].loggedIn).toBe(true)
+  })
+  
+})
+describe('loginUser false method tests', () => {
+  beforeEach(() => {scooterApp.registerUser('JoeZBloggs', 'test123', 21)
+  })
+  test('Should not login', () => {
+    expect(() => {
+      const newUser = scooterApp.loginUser('JoeZBloggs', 'test1323', 21)
+      scooterApp.loginUser(newUser);
+    }).toThrow('Username or Password is incorrect')
+  })
+})
 
 // log out
 
