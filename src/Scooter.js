@@ -1,7 +1,7 @@
 class Scooter {
   // scooter code here
   static nextSerial = 1
-  constructor(station =null, user = null, charge = 100, isBroken = false){
+  constructor(station =null, user = null,serial, charge = 100, isBroken = false){
     this.station=station
     this.user=user
     this.serial=serial
@@ -19,10 +19,7 @@ rent(user){
     throw Error('Scooter already rented')
   }
   if(this.station){
-    const stationLog = this.station.scooters.IndexOf(this)
-    if(stationLog > -1){
-      this.station.scooters.splice(stationLog, 1)
-    }
+    this.station.scooters = this.station.scooters.filter(scooter => scooter !== this)
   }
   this.user = user
   this.station = null
