@@ -1,5 +1,6 @@
 const User = require('../src/User')
 const ScooterApp = require('../src/ScooterApp')
+const Scooter = require('../src/Scooter')
 
 const scooterApp = new ScooterApp()
 // ScooterApp tests here
@@ -34,7 +35,37 @@ describe('loginUser false method tests', () => {
 })
 
 // log out
-
+describe('logout user', () => {
+  let user = scooterApp.registerUser('tester', 'test123', 21)
+  scooterApp.loginUser('tester', 'test123')
+  scooterApp.print()
+  scooterApp.logoutUser('tester')
+  expect(user.loggedIn).toBe(false)
+  scooterApp.print()
+})
+describe('logout user throw', () => {
+  scooterApp.registerUser('testerA', 'test123', 21)
+  // scooterApp.loginUser('testerA', 'test123')
+  // scooterApp.logoutUser('testerA')
+  expect(() => {
+    scooterApp.logoutUser(`testerz`)
+  }).toThrow('No user is logged in')
+})
 // rent scooter
+describe('rent scooter method',()=>{
+  let scooter
+  let user
+  beforeEach(() => {
+    scooter = new Scooter();
+    username = {username: 'testUser'}
+  })
+  test('rent scooter', () =>{
+    const scooter = scooterApp.createScooter('West')
+    scooter.station = 'West'
+    scooterApp.rentScooter(scooter, user)
+    expect(scooter.user).toBe(user)
+    expect(scooter.station).toBe(null)
+  })
+})
 
 // dock scooter
