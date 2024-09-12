@@ -4,8 +4,8 @@ class Scooter {
   constructor(station =null, user = null,serial, charge = 100, isBroken = false){
     this.station=station
     this.user=user
-    this.serial=serial
-    this.charge=Scooter.nextSerial++
+    this.serial=Scooter.nextSerial++
+    this.charge=charge
     this.isBroken=isBroken
 }
 rent(user){
