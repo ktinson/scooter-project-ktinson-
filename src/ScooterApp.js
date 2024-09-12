@@ -7,9 +7,12 @@ class ScooterApp {
     this.registeredUsers=registeredUsers
   }
   registerUser(username, password, age){
-      // if(this.registerUser[username]){
-      //   throw Error('Username in use')
-      // }
+      if(this.registerUser[username]){
+        throw Error('Username in use')
+      }
+      if(age < 18){
+        throw Error ('Too young to register')
+      }
       const newUser = new User(username, password, age)
       return newUser 
       }
