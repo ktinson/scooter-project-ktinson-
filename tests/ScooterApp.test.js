@@ -81,3 +81,14 @@ describe('dock scooter method',  () =>{
     expect(scooter.station).toBe(station)
   })
 })
+describe('create scooter method test', () => {
+  beforeEach(()=>{
+    scooterApp.registeredUsers['tester1'] = {username: 'tester1'}
+    scooterApp.stations.push({name: 'test test', scooters: []})
+  })
+  test('prints to console', () => {
+    console.log= jest.fn()
+    scooterApp.print()
+    expect(console.log).toHaveBeenCalledWith('Registered Users: ')
+  })
+})

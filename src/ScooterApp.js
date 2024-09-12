@@ -85,7 +85,9 @@ class ScooterApp {
       Station: station.name,
       Scooters: station.scooters.length,
 
-    }))
+    })
+  )
+  console.table(stationsArr)
   }
 }
 
