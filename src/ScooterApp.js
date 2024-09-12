@@ -29,8 +29,26 @@ class ScooterApp {
       throw Error('Username or Password is incorrect')
     }
   }
-  logoutUser(username){}
-  createScooter(station){}
+  logoutUser(username){
+    const user = this.registeredUsers[username];
+    if(!user){
+      throw Error('No user is logged in')
+    }
+    user.logout()
+    console.log(`${username} has been logged out`)
+  }
+  createScooter(station){
+    const sendStation = this.station.find(s => s.name === station)
+    if(!sendStation){
+      throw Error(`No such station`)
+    }
+    const instScooter = new Scooter()
+    sendStation.scooters.push(instScooter)
+    instScooter.station = sendStation
+    console.log(`Created new scooter`)
+    return instScooter
+
+  }
   dockScooter(scooter, station){}
   rentScooter(scooter, user){}
   print(){}
