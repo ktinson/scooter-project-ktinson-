@@ -57,7 +57,6 @@ describe('rent scooter method',()=>{
   let user
   beforeEach(() => {
     scooter = new Scooter();
-    username = {username: 'testUser'}
   })
   test('rent scooter', () =>{
     const scooter = scooterApp.createScooter('West')
@@ -69,3 +68,16 @@ describe('rent scooter method',()=>{
 })
 
 // dock scooter
+describe('dock scooter method',  () =>{
+  beforeEach(() => {
+    scooter = new Scooter();
+  })
+  test('test if scooter is docked', ()=>{
+    scooterApp.createScooter('Old')
+    station = 'Old'
+    scooterApp.dockScooter(scooter, station)
+    const sendStation = scooterApp.stations.find(s => s.name === station)
+    expect(sendStation.scooters).toContain(scooter)
+    expect(scooter.station).toBe(station)
+  })
+})
