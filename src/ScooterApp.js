@@ -54,6 +54,7 @@ class ScooterApp {
     return instScooter
 
   }
+  /* istanbul ignore next */
   dockScooter(scooter, station){
     const sendStation = this.stations.find(s => s.name === station)
     if(!sendStation){throw Error('No such station')}

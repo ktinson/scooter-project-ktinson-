@@ -26,7 +26,7 @@ rent(user){
 }
 dock(station){
   if(this.user){
-    throw Error('Scooter is currently rented')
+    throw Error('Scooter already rented')
   }
   this.station = station
   this.user = null

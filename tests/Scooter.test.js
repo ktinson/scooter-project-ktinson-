@@ -46,6 +46,7 @@ describe('scooter methods', () => {
     scooter.dock(dockStation)
     expect(scooter.station).toBe(dockStation)
     expect(dockStation.scooters).toContain(scooter)
+    scooter.rent(scooter)
+    expect(() => scooter.rent({username: 'userE'})).toThrow("Scooter already rented")  })
+
   })
- 
-})
