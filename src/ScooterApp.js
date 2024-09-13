@@ -54,7 +54,6 @@ class ScooterApp {
     return instScooter
 
   }
-  /* istanbul ignore next */
   dockScooter(scooter, station){
     const sendStation = this.stations.find(s => s.name === station)
     if(!sendStation){throw Error('No such station')}
@@ -71,7 +70,7 @@ class ScooterApp {
   }
   rentScooter(scooter, user){
     const theStation = this.stations.find(s => s.name === scooter.station)
-    if(!theStation){throw Error('Scooter is not available')}
+    if(!theStation){throw Error('Scooter is already rented')}
     if(scooter.user){throw Error('Scooter is already rented')}
     scooter.user = user
     scooter.station = null

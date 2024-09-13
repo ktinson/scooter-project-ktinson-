@@ -68,8 +68,10 @@ describe('rent scooter method',()=>{
     expect(scooter.user).toBe(user)
     expect(scooter.station).toBe(null)
     const newUser = {username: 'testerA'}
-    expect(() => scooterApp.rentScooter(scooter, newUser)).toThrow('Scooter is not available')
-  
+    expect(() => scooterApp.rentScooter(scooter, newUser)).toThrow('Scooter is already rented')
+    expect(scooter.user).toBe(user)
+    expect(scooter.station).toBe(null)
+    expect(() => scooterApp.rentScooter(scooter, newUser)).toThrow('Scooter is already rented')
   })
 })
 

@@ -42,11 +42,11 @@ describe('Has login and logout', () => {
     expect(user.login('test123')).toBe("Joeymal logged in")
     expect(user.loggedIn).toBe(true)
   })
+  
   test('has logout', () => {
     const result = user.logout()
     expect(user.loggedIn).toBe(false)
     expect(result).toBe("Joeymal logged out")
   })
 })
-// test logout
 
